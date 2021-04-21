@@ -145,5 +145,17 @@ class Map
     {
         m_view = view;  
     }
+    
+    int saveToDisk(File f)
+    {
+        println("Save:"+f);
+        return  0;
+    }
+    
+    int loadFromDisk(File f)
+    {
+        println("Load:"+f);
+        return  0;
+    }    
   
 }

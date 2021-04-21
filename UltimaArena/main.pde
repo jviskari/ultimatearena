@@ -11,6 +11,7 @@ final String TILEFILE = "data/u5.png";
 //final String TILEFILE = "data/u5a.png";
 //final String TILEFILE = "data/u5bw.png";
 
+File file;
 TileSet tileset;
 Map map;
 TileStack tilestack;
