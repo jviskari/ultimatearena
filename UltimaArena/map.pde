@@ -68,6 +68,11 @@ class Map
         return m_activeTile;
     }
     
+    int getTileAtCoord(int x, int y)
+    {
+        return getTileAt(coordToIndex(x), coordToIndex(y));
+    }
+    
     int getTileAt(int tileX, int tileY)
     {
        if (tileX < m_dimX && tileY < m_dimY)

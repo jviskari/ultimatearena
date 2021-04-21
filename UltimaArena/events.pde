@@ -23,3 +23,12 @@ void mouseDragged()
     //println("mouseDragged");
     map.setTileAt(mouseX, mouseY);  
 }
+
+
+void keyPressed()
+{   
+    if(key == 'f')
+    {
+        map.fillMap(map.getTileAtCoord(mouseX,mouseY)); 
+    }
+}
