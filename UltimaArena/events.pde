@@ -12,10 +12,19 @@ void mouseWheel(MouseEvent event)
   }
 }
 
-void mouseClicked()
+void mousePressed(MouseEvent event)
 {
-    //println("mouseClicked");
+  //println("EVENT " + event);
+  if (mouseButton == LEFT)
+  {
     map.setTileAt(mouseX, mouseY);  
+  } else if (mouseButton == RIGHT)
+  {
+  map.setActiveTile(map.getTileAtCoord(mouseX,mouseY)); 
+  } else 
+  {
+     map.fillMap(map.getTileAtCoord(mouseX,mouseY)); 
+  }      
 }
 
 void mouseDragged()
@@ -30,6 +39,11 @@ void keyPressed()
     if(key == 'f')
     {
         map.fillMap(map.getTileAtCoord(mouseX,mouseY)); 
+    }
+    
+    if(key == 'p')
+    {
+        map.setActiveTile(map.getTileAtCoord(mouseX,mouseY)); 
     }
     
     if(key == 's')
