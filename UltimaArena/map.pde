@@ -54,8 +54,12 @@ class Map
         else
         {
             m_activeTile = m_numTiles;            
-        }
-   
+        } 
+    }
+    
+    void setActiveTile(int tile)
+    {
+        m_activeTile = tile;
     }
     
     int getNumTiles()
@@ -112,16 +116,20 @@ class Map
 
     void setTileAt(int x, int y)
     { 
-      setMapTile(coordToIndex(x), coordToIndex(y), m_activeTile);      
+        setMapTile(coordToIndex(x), coordToIndex(y), m_activeTile);      
     }
     
     void setMapTile(int tileX, int tileY, int tileIndex)
     {
-       if (tileX < m_dimX && tileY < m_dimY)
+       if ((tileX < m_dimX) && (tileY < m_dimY) && (tileX >-1) && (tileY > -1))
        {
            m_dirty = true;
            m_map[tileX][tileY] = tileIndex;
        }      
+       else
+       {
+           println("Error:setMapTile() - invalid input");  //<>//
+       }
     }
     
     void render()
@@ -145,5 +153,19 @@ class Map
     {
         m_view = view;  
     }
+    
+    int saveToDisk(String fileName)
+    {
+        FileIO f = new FileIO(fileName);
+        f.saveIntMatrix(m_map);
+        return  0;
+    }
+    
+    int loadFromDisk(String fileName)
+    {
+        FileIO f = new FileIO(fileName);
+        m_map = f.loadIntMatrix(m_map);
+        return  0;
+    }    
   
 }

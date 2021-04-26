@@ -44,7 +44,7 @@ class TileStack
         
         for(int x = 0; x < stackSize; x++)
         {
-          println(x, activeTile);
+          //println(x, activeTile);
           m_view.image(m_tileset.getTile(tile), m_posx+m_tilesize*x, m_posy,m_tilesize,m_tilesize);
           tile = incTile(tile);          
         }
