@@ -17,10 +17,7 @@ Map map;
 TileStack tilestack;
 
 void draw()
-{
-    int tx = ((mouseX) / TILESIZE)*TILESIZE;
-    int ty = ((mouseY) / TILESIZE)*TILESIZE;
-    
+{ 
     stroke(255,0,0);
     noFill();
     background(0);

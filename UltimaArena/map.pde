@@ -5,7 +5,6 @@ class Map
     int [][]m_map;
     int m_dimX;
     int m_dimY;
-    int m_tilesize;
     int m_activeTile;
     int m_numTiles;
     boolean m_dirty;
@@ -13,7 +12,6 @@ class Map
     Map(TileSet tileset, int sizeX, int sizeY)
     {
         m_tileset = tileset;
-        m_tilesize = m_tileset.getTileSize();
         m_numTiles = m_tileset.getNumTiles();
         m_activeTile = 2;
         m_dimX=sizeX;
@@ -89,17 +87,20 @@ class Map
     
     int coordToGrid(int x)
     {
-        return ((x) / m_tilesize)*m_tilesize;   
+        int tileSize = m_tileset.getTileSize();
+        return ((x) / tileSize)*tileSize;   
     }
 
     int coordToIndex(int x)
     {
-        return ((x) / m_tilesize);   
+        int tileSize = m_tileset.getTileSize();
+        return ((x) / tileSize);   
     }    
 
     int indexToGrid(int x)
     {
-        return ((x) * m_tilesize);   
+        int tileSize = m_tileset.getTileSize();
+        return ((x) * tileSize);   
     }  
     
     void selectTileAt(int x, int y)
@@ -127,7 +128,7 @@ class Map
            m_map[tileX][tileY] = tileIndex;
        }      
        else
-       {
+       { //<>//
            println("Error:setMapTile() - invalid input");  //<>//
        }
     }

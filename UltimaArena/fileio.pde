@@ -7,25 +7,7 @@ class FileIO
      {
          m_fileName = new String(fileName);  
      }
-            
-     byte[] int32ToDWord32(int in)
-     {
-          byte[] bytes = new byte[4];
-          bytes[0] = byte(in&0xff);
-          bytes[1] = byte(in>>8);
-          bytes[2] = byte(in>>16);
-          bytes[3] = byte(in>>24);
-         
-          return bytes;
-     }
-    
-     int byte4ToInt32(byte in[])
-     {
-      int ret = int((in[0]) | (in[1] <<8 ) | (in[2] << 16) | (in[3] << 24) );
-      return ret;
-     }
-    
-    
+              
     void saveIntMatrix(int [][] mtx)
     {
         byte [] arr = new byte[mtx.length*mtx[0].length*4];      
@@ -45,7 +27,7 @@ class FileIO
             println("");
         } 
        
-      saveBytes(m_fileName, arr);      
+        saveBytes(m_fileName, arr);      
     }   
     
     int[][] loadIntMatrix(int[][] mtx)
