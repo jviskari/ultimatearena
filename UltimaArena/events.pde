@@ -1,3 +1,5 @@
+boolean loadFlag = true;
+
 void mouseWheel(MouseEvent event) 
 {
   float e = event.getCount();
@@ -48,24 +50,35 @@ void keyPressed()
     
     if(key == 's')
     {
-      selectOutput("Select a file to write to:", "fileSelected");
-        map.saveToDisk(file);
+        loadFlag = false;
+        selectOutput("Select a file to write to:", "fileSelected");
     }    
     
     if(key == 'l')
     {
-      selectInput("Select a file to process:", "fileSelected");
-        map.loadFromDisk(file);
+        loadFlag = true;
+        selectInput("Select a file to process:", "fileSelected");
     }       
     
 }
 
 
 void fileSelected(File selection) {
-  if (selection == null) {
+  if (selection == null)
+  {
     println("Window was closed or the user hit cancel.");
-  } else {
+  } else
+  {
     println("User selected " + selection.getAbsolutePath()); 
     file = selection;
+  }
+  
+  if (loadFlag == true)
+  {
+       map.loadFromDisk(file.getAbsolutePath());  
+  }
+  else 
+  {
+       map.saveToDisk(file.getAbsolutePath());
   }
 }

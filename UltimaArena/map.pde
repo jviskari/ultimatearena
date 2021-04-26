@@ -154,15 +154,17 @@ class Map
         m_view = view;  
     }
     
-    int saveToDisk(File f)
+    int saveToDisk(String fileName)
     {
-        println("Save:"+f);
+        FileIO f = new FileIO(fileName);
+        f.saveIntMatrix(m_map);
         return  0;
     }
     
-    int loadFromDisk(File f)
+    int loadFromDisk(String fileName)
     {
-        println("Load:"+f);
+        FileIO f = new FileIO(fileName);
+        m_map = f.loadIntMatrix(m_map);
         return  0;
     }    
   
